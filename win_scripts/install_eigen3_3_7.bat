@@ -2,8 +2,9 @@
 REM Set the paths
 set CMAKE_PATH="C:\Program Files\CMake\bin\cmake.exe"
 set SCRIPT_DIR=%~dp0
-set PROJECT_DIR=%SCRIPT_DIR%\..\eigen
-set INSTALL_DIR=%PROJECT_DIR%\..\libs_win\eigen3_3_7
+set TARGET_NAME=eigen-3.3.7
+set PROJECT_DIR=%SCRIPT_DIR%..\source_codes\%TARGET_NAME%
+set INSTALL_DIR=%PROJECT_DIR%\..\..\libs_win\%TARGET_NAME%
 set VS_VERSION="Visual Studio 17 2022"
 
 set BUILD_TYPE=%1

@@ -2,8 +2,9 @@
 REM Set the paths
 set CMAKE_PATH="C:\Program Files\CMake\bin\cmake.exe"
 set SCRIPT_DIR=%~dp0
-set PROJECT_DIR=%SCRIPT_DIR%\..\opencv3_4_20
-set INSTALL_DIR=%PROJECT_DIR%\..\libs_win\opencv3_4_20
+set TARGET_NAME=opencv-3.4.20
+set PROJECT_DIR=%SCRIPT_DIR%..\source_codes\%TARGET_NAME%
+set INSTALL_DIR=%PROJECT_DIR%\..\..\libs_win\%TARGET_NAME%
 set VS_VERSION="Visual Studio 17 2022"
 
 set BUILD_TYPE=%1
@@ -48,7 +49,7 @@ REM Run CMake for the project with a custom install prefix
 -D BUILD_opencv_python2=OFF ^
 -D BUILD_opencv_python3=OFF ^
 -D BUILD_JAVA=OFF ^
--D OPENCV_EXTRA_MODULES_PATH=%PROJECT_DIR%\..\opencv_contrib3_4_20\modules ^
+-D OPENCV_EXTRA_MODULES_PATH=%PROJECT_DIR%\..\opencv_contrib-3.4.20\modules ^
 -D BUILD_ANDROID_PROJECTS=OFF ^
 -D BUILD_EXAMPLES=OFF ^
 -D BUILD_PERF_TESTS=OFF ^

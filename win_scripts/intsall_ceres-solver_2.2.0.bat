@@ -2,8 +2,9 @@
 REM Set the paths
 set CMAKE_PATH="C:\Program Files\CMake\bin\cmake.exe"
 set SCRIPT_DIR=%~dp0
-set PROJECT_DIR=%SCRIPT_DIR%\..\ceres-solver_2.2.0
-set INSTALL_DIR=%PROJECT_DIR%\..\libs_win\ceres-solver_2.2.0
+set TARGET_NAME=ceres-solver-2.2.0
+set PROJECT_DIR=%SCRIPT_DIR%..\source_codes\%TARGET_NAME%
+set INSTALL_DIR=%PROJECT_DIR%\..\..\libs_win\%TARGET_NAME%
 set VS_VERSION="Visual Studio 17 2022"
 
 set BUILD_TYPE=%1

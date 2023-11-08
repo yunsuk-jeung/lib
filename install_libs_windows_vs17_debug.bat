@@ -7,9 +7,9 @@ set BUILD_TYPE=Debug
 @REM call win_scripts\install_eigen3_3_7.bat %BUILD_TYPE%
 @REM echo Eigen Done!
 
-@REM cd %CURR_DIR%
-@REM call win_scripts\intsall_tbb_2021_11_0_rc1.bat %BUILD_TYPE%
-@REM echo spdlog Done!
+cd %CURR_DIR%
+call win_scripts\intsall_oneapi-tbb-2021_11_0_rc1.bat %BUILD_TYPE%
+echo intsall_oneapi-tbb-2021_10_0 Done!
 
 @REM cd %CURR_DIR%
 @REM call win_scripts\intsall_spdlog1_12_0.bat %BUILD_TYPE%
@@ -28,8 +28,8 @@ set BUILD_TYPE=Debug
 @REM echo install_boost_1_78_0 Done!
 
 @REM cd %CURR_DIR%
-@REM call win_scripts\intsall_gtsam_4_2_0.bat %BUILD_TYPE%
-@REM echo intsall_gtsam_4_2_0 Done!
+@REM call win_scripts\intsall_gtsam_ba23e4.bat %BUILD_TYPE%
+@REM echo intsall_gtsam_ba23e4 Done!
 
 @REM cd %CURR_DIR%
 @REM call win_scripts\intsall_gflags_2_2_2.bat %BUILD_TYPE%
@@ -39,8 +39,8 @@ set BUILD_TYPE=Debug
 @REM call win_scripts\intsall_glog_0_6_0.bat %BUILD_TYPE%
 @REM echo intsall_glog_0_6_0 Done!
 
-cd %CURR_DIR%
-call win_scripts\intsall_ceres-solver_2.2.0.bat %BUILD_TYPE%
-echo intsall_ceres-solver_2.2.0 Done!
+@REM cd %CURR_DIR%
+@REM call win_scripts\intsall_ceres-solver_2.2.0.bat %BUILD_TYPE%
+@REM echo intsall_ceres-solver_2.2.0 Done!
 
 pause

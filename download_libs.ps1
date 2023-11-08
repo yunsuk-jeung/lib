@@ -58,7 +58,7 @@ function Expand-ArchiveFile {
 "###################### TBB #########################################"
 
 $name = "tbb"
-$url = "https://github.com/oneapi-src/oneTBB/releases/download/v2021.10.0/oneapi-tbb-2021.10.0-win.zip"
+$url = "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.11.0-rc1.zip"
 $type = ".zip"
 $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
