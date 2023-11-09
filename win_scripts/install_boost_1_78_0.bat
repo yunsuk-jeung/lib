@@ -1,7 +1,7 @@
 @echo off
 REM Set the paths
 set SCRIPT_DIR=%~dp0
-set TARGET_NAME=boost-boost-1.78.0
+set TARGET_NAME=boost-1.78.0
 set PROJECT_DIR=%SCRIPT_DIR%..\source_codes\%TARGET_NAME%
 set INSTALL_DIR=%PROJECT_DIR%\..\..\libs_win\%TARGET_NAME%
 set VS_VERSION="Visual Studio 17 2022"
@@ -20,6 +20,7 @@ if /I "%BUILD_TYPE%"=="Debug" (
 
 REM Navigate to the project directory
 cd %PROJECT_DIR%
+echo %PROJECT_DIR%
 
 call bootstrap.bat
 call .\b2 --prefix=%INSTALL_DIR% toolset=msvc-14.3 variant=%CURR_BUILD_TYPE% link=static threading=multi address-model=64 runtime-link=shared install

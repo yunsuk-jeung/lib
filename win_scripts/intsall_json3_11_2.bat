@@ -19,11 +19,6 @@ REM Create a build directory if it doesn't exist
 if not exist %PROJECT_DIR%\%BUILD_DIR% mkdir %PROJECT_DIR%\%BUILD_DIR%
 cd %PROJECT_DIR%\%BUILD_DIR%
 
-SET "gitignore_path=%PROJECT_DIR%\%BUILD_DIR%\.gitignore"
-echo # Ignore everything in this directory> "%gitignore_path%"
-echo *>> "%gitignore_path%"
-echo .gitignore file created/overwritten successfully.
-
 IF EXIST CMakeCache.txt DEL /F CMakeCache.txt
 
 REM Run CMake for the project with a custom install prefix

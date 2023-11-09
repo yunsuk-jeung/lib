@@ -1,5 +1,8 @@
 @echo off
 
+@echo off
+powershell -File "download_libs.ps1"
+
 set CURR_DIR=%~dp0
 set BUILD_TYPE=Debug
 
@@ -7,9 +10,9 @@ set BUILD_TYPE=Debug
 @REM call win_scripts\install_eigen3_3_7.bat %BUILD_TYPE%
 @REM echo Eigen Done!
 
-cd %CURR_DIR%
-call win_scripts\intsall_oneapi-tbb-2021_11_0_rc1.bat %BUILD_TYPE%
-echo intsall_oneapi-tbb-2021_10_0 Done!
+@REM cd %CURR_DIR%
+@REM call win_scripts\intsall_oneapi-tbb-2021_11_0_rc1.bat %BUILD_TYPE%
+@REM echo intsall_oneapi-tbb-2021_10_0 Done!
 
 @REM cd %CURR_DIR%
 @REM call win_scripts\intsall_spdlog1_12_0.bat %BUILD_TYPE%

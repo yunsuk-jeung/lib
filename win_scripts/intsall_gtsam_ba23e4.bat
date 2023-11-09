@@ -2,7 +2,7 @@
 REM Set the paths
 set CMAKE_PATH="C:\Program Files\CMake\bin\cmake.exe"
 set SCRIPT_DIR=%~dp0
-set TARGET_NAME=gtsam-ba23e45722c0fa4ca81e66fe71bf670d7493bfbf
+set TARGET_NAME=gtsam-ba23e45
 set PROJECT_DIR=%SCRIPT_DIR%..\source_codes\%TARGET_NAME%
 set INSTALL_DIR=%PROJECT_DIR%\..\..\libs_win\%TARGET_NAME%
 set VS_VERSION="Visual Studio 17 2022"
@@ -32,18 +32,15 @@ REM Create a build directory if it doesn't exist
 if not exist %PROJECT_DIR%\%BUILD_DIR% mkdir %PROJECT_DIR%\%BUILD_DIR%
 cd %PROJECT_DIR%\%BUILD_DIR%
 
-SET "gitignore_path=%PROJECT_DIR%\%BUILD_DIR%\.gitignore"
-echo # Ignore everything in this directory> "%gitignore_path%"
-echo *>> "%gitignore_path%"
-echo .gitignore file created/overwritten successfully.
-
 IF EXIST CMakeCache.txt DEL /F CMakeCache.txt
 
 REM Run CMake for the project with a custom install prefix
 %CMAKE_PATH% -G %VS_VERSION% -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
--D CMAKE_PREFIX_PATH=%SCRIPT_DIR%\..\libs_win\boost_1_78_0\lib\cmake;%SCRIPT_DIR%\..\libs_win\tbb_2021_11_0_rc1/lib/cmake/TBB;%SCRIPT_DIR%\..\libs_win\eigen3_3_7\share\eigen3\cmake; ^
+-D CMAKE_PREFIX_PATH=%SCRIPT_DIR%\..\libs_win\boost-1.78.0\lib\cmake;%SCRIPT_DIR%\..\libs_win\oneTBB-2021.11.0-rc1/lib/cmake/TBB;%SCRIPT_DIR%\..\libs_win\eigen3_3_7\share\eigen3\cmake; ^
 -D BUILD_SHARED_LIBS=OFF ^
 -D GTSAM_BUILD_TESTS=OFF ^
+-D GTSAM_BUILD_WITH_MARCH_NATIVE=OFF ^
+-D GTSAM_USE_SYSTEM_EIGEN=ON ^
 -D GTSAM_UNSTABLE_BUILD_PYTHON=OFF ^
 -D GTSAM_TANGENT_PREINTEGRATION=OFF ^
 -D GTSAM_BUILD_EXAMPLES_ALWAYS=OFF ^

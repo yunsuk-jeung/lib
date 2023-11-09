@@ -29,21 +29,16 @@ REM Create a build directory if it doesn't exist
 if not exist %PROJECT_DIR%\%BUILD_DIR% mkdir %PROJECT_DIR%\%BUILD_DIR%
 cd %PROJECT_DIR%\%BUILD_DIR%
 
-SET "gitignore_path=%PROJECT_DIR%\%BUILD_DIR%\.gitignore"
-echo # Ignore everything in this directory> "%gitignore_path%"
-echo *>> "%gitignore_path%"
-echo # Except for this file>> "%gitignore_path%"
-
 IF EXIST CMakeCache.txt DEL /F CMakeCache.txt
 
 REM Run CMake for the project with a custom install prefix
-%CMAKE_PATH% -G %VS_VERSION% -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
+%CMAKE_PATH% -G %VS_VERSION% -DCMAKE_CXX_FLAGS="-MP" -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
 -D CMAKE_PREFIX_PATH=%SCRIPT_DIR%\..\libs_win\eigen3_3_7\share\eigen3\cmake ^
 -D WITH_PROTOBUF=OFF ^
 -D WITH_EIGEN=ON ^
 -D WITH_TBB=ON ^
--D TBB_DIR=%SCRIPT_DIR%\..\libs_win\tbb_2021_11_0_rc1\lib\cmake\TBB ^
--D TBB_ENV_INCLUDE=%SCRIPT_DIR%\..\libs_win\tbb_2021_11_0_rc1\include ^
+-D TBB_DIR=%SCRIPT_DIR%\..\libs_win\oneTBB-2021.11.0-rc1\lib\cmake\TBB ^
+-D TBB_ENV_INCLUDE=%SCRIPT_DIR%\..\libs_win\oneTBB-2021.11.0-rc1\include ^
 -D WITH_VTK=ON ^
 -D BUILD_opencv_python=OFF ^
 -D BUILD_opencv_python2=OFF ^

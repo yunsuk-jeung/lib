@@ -54,9 +54,8 @@ function Expand-ArchiveFile {
   }
 
 }
-
+"####################################################################"
 "###################### TBB #########################################"
-
 $name = "tbb"
 $url = "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.11.0-rc1.zip"
 $type = ".zip"
@@ -64,14 +63,24 @@ $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
 
+"####################################################################"
 "###################### boost #########################################"
-$name = "boost"
-$url = "https://github.com/boostorg/boost/archive/refs/tags/boost-1.78.0.zip"
-$type = ".zip"
-$zipfile = ($name + $type)
-Download-FileIfNotExist -url $url -filePath $zipfile
-Expand-ArchiveFile -filePath $zipfile
+$filePath = ".\source_codes\boost-1.78.0"
+if (Test-Path -Path $filePath) {
+  Write-Host "The file $filePath already exists."
+}
+else {
+  Write-Host "Downloading $filePath... by git clone"
+  git clone  "https://github.com/boostorg/boost.git" $filePath
+  cd $filePath
+  git checkout "boost-1.78.0"
+  git submodule update --init --recursive
+  cd "..\.."
+  Write-Host "Download completed."
+}
 
+
+"####################################################################"
 "###################### eigen #########################################"
 $name = "eigen"
 $url = "https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip"
@@ -80,6 +89,7 @@ $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
 
+"####################################################################"
 "###################### gflags #########################################"
 $name = "gflags"
 $url = "https://github.com/gflags/gflags/archive/refs/tags/v2.2.2.zip"
@@ -88,7 +98,7 @@ $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
 
-
+"####################################################################"
 "###################### glog #########################################"
 $name = "glog"
 $url = "https://github.com/google/glog/archive/refs/tags/v0.6.0.zip"
@@ -98,6 +108,7 @@ Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
 
 
+"####################################################################"
 "###################### ceres #########################################"
 $name = "ceres"
 $url = "https://github.com/ceres-solver/ceres-solver/archive/refs/tags/2.2.0.zip"
@@ -106,13 +117,29 @@ $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
 
+"####################################################################"
 "###################### gtsam #########################################"
-$name = "gtsam"
-$url = "https://github.com/borglab/gtsam/archive/ba23e45722c0fa4ca81e66fe71bf670d7493bfbf.zip"
-$type = ".zip"
-$zipfile = ($name + $type)
-Download-FileIfNotExist -url $url -filePath $zipfile
-Expand-ArchiveFile -filePath $zipfile
+
+$filePath = ".\source_codes\gtsam-ba23e45"
+if (Test-Path -Path $filePath) {
+  Write-Host "The file $filePath already exists."
+}
+else {
+  Write-Host "Downloading $filePath... by git clone"
+  git clone  "https://github.com/borglab/gtsam.git"  $filePath
+  cd $filePath
+  git checkout "boost-1.78.0"
+  git submodule update --init --recursive
+  cd "..\.."
+  Write-Host "Download completed."
+}
+
+# $name = "gtsam"
+# $url = "https://github.com/borglab/gtsam/archive/ba23e45722c0fa4ca81e66fe71bf670d7493bfbf.zip"
+# $type = ".zip"
+# $zipfile = ($name + $type)
+# Download-FileIfNotExist -url $url -filePath $zipfile
+# Expand-ArchiveFile -filePath $zipfile
 
 "####################################################################"
 "########################### json ###################################"
@@ -122,7 +149,6 @@ $type = ".zip"
 $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
-
 
 "####################################################################"
 "########################### opencvcontriv3420  #####################"

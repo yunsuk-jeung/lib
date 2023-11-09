@@ -19,18 +19,13 @@ REM Create a build directory if it doesn't exist
 if not exist %PROJECT_DIR%\%BUILD_DIR% mkdir %PROJECT_DIR%\%BUILD_DIR%
 cd %PROJECT_DIR%\%BUILD_DIR%
 
-SET "gitignore_path=%PROJECT_DIR%\%BUILD_DIR%\.gitignore"
-echo # Ignore everything in this directory> "%gitignore_path%"
-echo *>> "%gitignore_path%"
-echo .gitignore file created/overwritten successfully.
-
 IF EXIST CMakeCache.txt DEL /F CMakeCache.txt
 
 REM Run CMake for the project with a custom install prefix
-%CMAKE_PATH% -G %VS_VERSION% -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
+%CMAKE_PATH% -G %VS_VERSION% -DCMAKE_CXX_FLAGS="-MP" -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
 -D CMAKE_PREFIX_PATH=^
-%SCRIPT_DIR%\..\libs_win\eigen3_3_7\share\eigen3\cmake;^
-%SCRIPT_DIR%\..\libs_win\glog_0_6_0\lib\cmake\glog ^
+%SCRIPT_DIR%\..\libs_win\eigen-3.3.7\share\eigen3\cmake;^
+%SCRIPT_DIR%\..\libs_win\glog-0.6.0\lib\cmake\glog ^
 -D MINIGLOG=OFF ^
 -D GFLAGS=ON ^
 -D SUITESPARSE=OFF ^
