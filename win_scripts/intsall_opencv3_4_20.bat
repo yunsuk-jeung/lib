@@ -33,7 +33,7 @@ IF EXIST CMakeCache.txt DEL /F CMakeCache.txt
 
 REM Run CMake for the project with a custom install prefix
 %CMAKE_PATH% -G %VS_VERSION% -DCMAKE_CXX_FLAGS="-MP" -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
--D CMAKE_PREFIX_PATH=%SCRIPT_DIR%\..\libs_win\eigen3_3_7\share\eigen3\cmake ^
+-D CMAKE_PREFIX_PATH=%SCRIPT_DIR%\..\libs_win\eigen-3.4.0\share\eigen3\cmake ^
 -D WITH_PROTOBUF=OFF ^
 -D WITH_EIGEN=ON ^
 -D WITH_TBB=ON ^

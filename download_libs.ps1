@@ -79,11 +79,19 @@ else {
   Write-Host "Download completed."
 }
 
+# "####################################################################"
+# "###################### eigen #########################################"
+# $name = "eigen"
+# $url = "https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip"
+# $type = ".zip"
+# $zipfile = ($name + $type)
+# Download-FileIfNotExist -url $url -filePath $zipfile
+# Expand-ArchiveFile -filePath $zipfile
 
 "####################################################################"
 "###################### eigen #########################################"
-$name = "eigen"
-$url = "https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip"
+$name = "eigen34"
+$url = "https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip"
 $type = ".zip"
 $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
@@ -133,14 +141,6 @@ else {
   cd "..\.."
   Write-Host "Download completed."
 }
-
-# $name = "gtsam"
-# $url = "https://github.com/borglab/gtsam/archive/ba23e45722c0fa4ca81e66fe71bf670d7493bfbf.zip"
-# $type = ".zip"
-# $zipfile = ($name + $type)
-# Download-FileIfNotExist -url $url -filePath $zipfile
-# Expand-ArchiveFile -filePath $zipfile
-
 "####################################################################"
 "########################### json ###################################"
 $name = "json"

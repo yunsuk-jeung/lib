@@ -7,7 +7,7 @@ set CURR_DIR=%~dp0
 set BUILD_TYPE=Debug
 
 @REM cd %CURR_DIR%
-@REM call win_scripts\install_eigen3_3_7.bat %BUILD_TYPE%
+@REM call win_scripts\install_eigen3_4_0.bat %BUILD_TYPE%
 @REM echo Eigen Done!
 
 @REM cd %CURR_DIR%
@@ -30,9 +30,9 @@ set BUILD_TYPE=Debug
 @REM call win_scripts\install_boost_1_78_0.bat %BUILD_TYPE%
 @REM echo install_boost_1_78_0 Done!
 
-@REM cd %CURR_DIR%
-@REM call win_scripts\intsall_gtsam_ba23e4.bat %BUILD_TYPE%
-@REM echo intsall_gtsam_ba23e4 Done!
+cd %CURR_DIR%
+call win_scripts\intsall_gtsam_ba23e4.bat %BUILD_TYPE%
+echo intsall_gtsam_ba23e4 Done!
 
 @REM cd %CURR_DIR%
 @REM call win_scripts\intsall_gflags_2_2_2.bat %BUILD_TYPE%

@@ -26,7 +26,16 @@ if errorlevel 1 (
     echo chaned cmake file.
 )
 
-set BUILD_DIR="build"
+if /I "%BUILD_TYPE%"=="Debug" (
+    set BUILD_DIR="build_d"
+) else if /I "%BUILD_TYPE%"=="Release" (
+    set BUILD_DIR="build_r"
+) else (
+    echo Invalid BUILD_TYPE specified. Must be Debug or Release.
+    exit /b 1
+)
+
+
 
 REM Create a build directory if it doesn't exist
 if not exist %PROJECT_DIR%\%BUILD_DIR% mkdir %PROJECT_DIR%\%BUILD_DIR%
@@ -35,14 +44,14 @@ cd %PROJECT_DIR%\%BUILD_DIR%
 IF EXIST CMakeCache.txt DEL /F CMakeCache.txt
 
 REM Run CMake for the project with a custom install prefix
-%CMAKE_PATH% -G %VS_VERSION% -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
--D CMAKE_PREFIX_PATH=%SCRIPT_DIR%\..\libs_win\boost-1.78.0\lib\cmake;%SCRIPT_DIR%\..\libs_win\oneTBB-2021.11.0-rc1/lib/cmake/TBB;%SCRIPT_DIR%\..\libs_win\eigen3_3_7\share\eigen3\cmake; ^
+%CMAKE_PATH% -G %VS_VERSION% -DCMAKE_CXX_FLAGS="-MP" -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
+-D CMAKE_PREFIX_PATH=%SCRIPT_DIR%\..\libs_win\boost-1.78.0\lib\cmake;%SCRIPT_DIR%\..\libs_win\eigen-3.4.0\share\eigen3\cmake;%SCRIPT_DIR%\..\libs_win\oneTBB-2021.11.0-rc1/lib/cmake/TBB; ^
 -D BUILD_SHARED_LIBS=OFF ^
 -D GTSAM_BUILD_TESTS=OFF ^
 -D GTSAM_BUILD_WITH_MARCH_NATIVE=OFF ^
 -D GTSAM_USE_SYSTEM_EIGEN=ON ^
 -D GTSAM_UNSTABLE_BUILD_PYTHON=OFF ^
--D GTSAM_TANGENT_PREINTEGRATION=OFF ^
+-D GTSAM_TANGENT_PREINTEGRATION=ON ^
 -D GTSAM_BUILD_EXAMPLES_ALWAYS=OFF ^
 ..
 
