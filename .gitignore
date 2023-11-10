@@ -1,2 +1,4 @@
 source_codes/
 libs_win/
+.vscode/
+build/
