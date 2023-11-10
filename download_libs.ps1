@@ -98,6 +98,15 @@ Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
 
 "####################################################################"
+"###################### sophus #########################################"
+$name = "sophus"
+$url = "https://github.com/strasdat/Sophus/archive/refs/tags/1.22.10.zip"
+$type = ".zip"
+$zipfile = ($name + $type)
+Download-FileIfNotExist -url $url -filePath $zipfile
+Expand-ArchiveFile -filePath $zipfile
+
+"####################################################################"
 "###################### gflags #########################################"
 $name = "gflags"
 $url = "https://github.com/gflags/gflags/archive/refs/tags/v2.2.2.zip"
