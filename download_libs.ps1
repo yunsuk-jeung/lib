@@ -98,6 +98,15 @@ Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
 
 "####################################################################"
+"###################### fmt #########################################"
+$name = "fmt"
+$url = "https://github.com/fmtlib/fmt/archive/refs/tags/10.1.1.zip"
+$type = ".zip"
+$zipfile = ($name + $type)
+Download-FileIfNotExist -url $url -filePath $zipfile
+Expand-ArchiveFile -filePath $zipfile
+
+"####################################################################"
 "###################### sophus #########################################"
 $name = "sophus"
 $url = "https://github.com/strasdat/Sophus/archive/refs/tags/1.22.10.zip"
@@ -105,6 +114,19 @@ $type = ".zip"
 $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
+
+# $filePath = ".\source_codes\sophus-d270df2"
+# if (Test-Path -Path $filePath) {
+#   Write-Host "The file $filePath already exists."
+# }
+# else {
+#   Write-Host "Downloading $filePath... by git clone"
+#   git clone  "https://github.com/strasdat/Sophus.git"  $filePath
+#   cd $filePath
+#   git checkout "d270df2"
+#   cd "..\.."
+#   Write-Host "Download completed."
+# }
 
 "####################################################################"
 "###################### gflags #########################################"
@@ -145,7 +167,7 @@ else {
   Write-Host "Downloading $filePath... by git clone"
   git clone  "https://github.com/borglab/gtsam.git"  $filePath
   cd $filePath
-  git checkout "boost-1.78.0"
+  git checkout "ba23e45"
   git submodule update --init --recursive
   cd "..\.."
   Write-Host "Download completed."
