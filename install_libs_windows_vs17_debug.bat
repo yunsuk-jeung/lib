@@ -16,7 +16,7 @@ set BUILD_TYPE=Debug
 
 @REM cd %CURR_DIR%
 @REM call win_scripts\install_sophus_1_22_10.bat %BUILD_TYPE%
-@REM echo install_sophus-d270df2 Done!
+@REM echo install_sophus_1_22_10 Done!
 
 @REM cd %CURR_DIR%
 @REM call win_scripts\intsall_oneapi-tbb-2021_11_0_rc1.bat %BUILD_TYPE%
