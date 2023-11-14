@@ -21,6 +21,8 @@ endif()
 
 add_library(${PROJECT_NAME} INTERFACE)
 
+target_include_directories(${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/utils)
+
 if(LINK_WITH_JSON)
   list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/json-3.11.2/share/cmake/nlohmann_json)
   find_package(nlohmann_json REQUIRED)
@@ -30,7 +32,7 @@ endif()
 if(LINK_WITH_FMT)
   list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/fmt-10.1.1/lib/cmake/fmt)
   find_package(fmt REQUIRED)
-  target_link_libraries(${PROJECT_NAME} INTERFACE  fmt::fmt)
+  target_link_libraries(${PROJECT_NAME} INTERFACE fmt::fmt)
 endif()
 
 if(LINK_WITH_SPDLOG)
@@ -65,6 +67,7 @@ if(LINK_WITH_OPENCV34)
 endif()
 
 if(LINK_WITH_CERES)
+  list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/gflags-2.2.2/lib/cmake/gflags)
   list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/glog-0.6.0/lib/cmake/glog)
   list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/ceres-solver-2.2.0/lib/cmake/Ceres)
   find_package(Ceres REQUIRED)
