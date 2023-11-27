@@ -38,20 +38,24 @@ set BUILD_TYPE=Debug
 @REM call win_scripts\install_boost_1_78_0.bat %BUILD_TYPE%
 @REM echo install_boost_1_78_0 Done!
 
-cd %CURR_DIR%
-call win_scripts\intsall_gtsam_ba23e4.bat %BUILD_TYPE%
-echo intsall_gtsam_ba23e4 Done!
+@REM cd %CURR_DIR%
+@REM call win_scripts\intsall_gtsam_ba23e4.bat %BUILD_TYPE%
+@REM echo intsall_gtsam_ba23e4 Done!
+
+@REM cd %CURR_DIR%
+@REM call win_scripts\intsall_gflags_2_2_2.bat %BUILD_TYPE%
+@REM echo intsall_gflags_2_2_2 Done!
+
+@REM cd %CURR_DIR%
+@REM call win_scripts\intsall_glog_0_6_0.bat %BUILD_TYPE%
+@REM echo intsall_glog_0_6_0 Done!
+
+@REM cd %CURR_DIR%
+@REM call win_scripts\intsall_ceres-solver_2.2.0.bat %BUILD_TYPE%
+@REM echo intsall_ceres-solver_2.2.0 Done!
 
 cd %CURR_DIR%
-call win_scripts\intsall_gflags_2_2_2.bat %BUILD_TYPE%
-echo intsall_gflags_2_2_2 Done!
-
-cd %CURR_DIR%
-call win_scripts\intsall_glog_0_6_0.bat %BUILD_TYPE%
-echo intsall_glog_0_6_0 Done!
-
-cd %CURR_DIR%
-call win_scripts\intsall_ceres-solver_2.2.0.bat %BUILD_TYPE%
+call win_scripts\install_vulkan_thirdparties.bat %BUILD_TYPE%
 echo intsall_ceres-solver_2.2.0 Done!
 
 pause

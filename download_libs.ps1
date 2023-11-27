@@ -172,6 +172,7 @@ else {
   cd "..\.."
   Write-Host "Download completed."
 }
+
 "####################################################################"
 "########################### json ###################################"
 $name = "json"
@@ -207,6 +208,56 @@ $type = ".zip"
 $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
+
+"####################################################################"
+"########################### vma ###################################"
+$name = "vma"
+$url = "https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/refs/tags/v3.0.1.zip"
+$type = ".zip"
+$zipfile = ($name + $type)
+Download-FileIfNotExist -url $url -filePath $zipfile
+Expand-ArchiveFile -filePath $zipfile
+
+"####################################################################"
+"########################### volk ###################################"
+$name = "volk"
+$url = "https://github.com/zeux/volk/archive/refs/tags/1.3.250.zip"
+$type = ".zip"
+$zipfile = ($name + $type)
+Download-FileIfNotExist -url $url -filePath $zipfile
+Expand-ArchiveFile -filePath $zipfile
+
+$filePath = ".\source_codes\Vulkan-Headers_1.3.250.1"
+if (Test-Path -Path $filePath) {
+  Write-Host "The file $filePath already exists."
+}
+else {
+  Write-Host "Downloading $filePath... by git clone"
+  git clone  "https://github.com/KhronosGroup/Vulkan-Headers.git" $filePath
+  cd $filePath
+  git checkout "sdk-1.3.250.1"
+  git submodule update --init --recursive
+  cd "..\.."
+  Write-Host "Download completed."
+}
+
+"####################################################################"
+"########################### imgui ###################################"
+$name = "imgui"
+$url = "https://github.com/ocornut/imgui/archive/refs/tags/v1.90.zip"
+$type = ".zip"
+$zipfile = ($name + $type)
+Download-FileIfNotExist -url $url -filePath $zipfile
+Expand-ArchiveFile -filePath $zipfile
+
+# "####################################################################"
+# "###########################  ###################################"
+# $name = ""
+# $url = ""
+# $type = ".zip"
+# $zipfile = ($name + $type)
+# Download-FileIfNotExist -url $url -filePath $zipfile
+# Expand-ArchiveFile -filePath $zipfile
 
 # "####################################################################"
 # "###########################  ###################################"
