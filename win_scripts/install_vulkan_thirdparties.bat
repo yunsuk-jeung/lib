@@ -1,4 +1,4 @@
-@REM xcopy "source_codes\VulkanMemoryAllocator-3.0.1\include" "libs_win\VulkanMemoryAllocator-3.0.1\include" /Y /E /H /C /I
+xcopy "source_codes\VulkanMemoryAllocator-3.0.1\include" "libs_win\VulkanMemoryAllocator-3.0.1\include" /Y /E /H /C /I
 
 xcopy "source_codes\volk-1.3.250\volk.h" "libs_win\volk-1.3.250\" /H /C /I /Y 
 xcopy "source_codes\volk-1.3.250\volk.c" "libs_win\volk-1.3.250\" /H /C /I /Y

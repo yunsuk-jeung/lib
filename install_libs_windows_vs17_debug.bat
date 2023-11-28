@@ -54,13 +54,13 @@ set BUILD_TYPE=Debug
 @REM call win_scripts\intsall_ceres-solver_2.2.0.bat %BUILD_TYPE%
 @REM echo intsall_ceres-solver_2.2.0 Done!
 
-cd %CURR_DIR%
-call win_scripts\intsall_glfw_3_3_8.bat %BUILD_TYPE%
-echo intsall_glfw_3_3_8 Done!
-
 @REM cd %CURR_DIR%
-@REM call win_scripts\install_vulkan_thirdparties.bat %BUILD_TYPE%
-@REM echo install_vulkan_thirdparties Done!
+@REM call win_scripts\intsall_glfw_3_3_8.bat %BUILD_TYPE%
+@REM echo intsall_glfw_3_3_8 Done!
+
+cd %CURR_DIR%
+call win_scripts\install_vulkan_thirdparties.bat %BUILD_TYPE%
+echo install_vulkan_thirdparties Done!
 
 
 pause

@@ -48,3 +48,13 @@ find_package(Ceres REQUIRED)
 target_link_libraries(${PROJECT_NAME} INTERFACE ceres)
 
 set(FOUND_LIBS TRUE)
+
+add_library(graphicslib INTERFACE)
+target_include_directories(graphicslib
+  INTERFACE
+  ${LIB_DIR}/Vulkan-Headers_1.3.250.1/include
+  ${LIB_DIR}/volk-1.3.250
+  ${LIB_DIR}/VulkanMemoryAllocator-3.0.1/include
+)
+
+set(FOUND_GRAPHICS_LIBS TRUE)
