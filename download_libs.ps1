@@ -250,14 +250,14 @@ $zipfile = ($name + $type)
 Download-FileIfNotExist -url $url -filePath $zipfile
 Expand-ArchiveFile -filePath $zipfile
 
-# "####################################################################"
-# "###########################  ###################################"
-# $name = ""
-# $url = ""
-# $type = ".zip"
-# $zipfile = ($name + $type)
-# Download-FileIfNotExist -url $url -filePath $zipfile
-# Expand-ArchiveFile -filePath $zipfile
+"####################################################################"
+"########################### glfw ###################################"
+$name = "glfw"
+$url = "https://github.com/glfw/glfw/archive/refs/tags/3.3.8.zip"
+$type = ".zip"
+$zipfile = ($name + $type)
+Download-FileIfNotExist -url $url -filePath $zipfile
+Expand-ArchiveFile -filePath $zipfile
 
 # "####################################################################"
 # "###########################  ###################################"
