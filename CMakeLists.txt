@@ -57,4 +57,23 @@ target_include_directories(graphicslib
   ${LIB_DIR}/VulkanMemoryAllocator-3.0.1/include
 )
 
+include(findVulkanThirdParties.cmake)
+find_vulkan_thirdparties("C:/VulkanSDK/1.3.250.1")
+
+list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/glfw-3.3.8/lib/cmake/glfw3)
+find_package(glfw3 REQUIRED)
+
+set(IMGUI_DIR ${LIB_DIR}/imgui-1.90)
+
+file(GLOB IMGUI_SRC
+  ${IMGUI_DIR}/*.h
+  ${IMGUI_DIR}/*.cpp
+)
+
+set(IMGUI_BACKEND ${IMGUI_DIR}/backends/imgui_impl_glfw.h ${IMGUI_DIR}/backends/imgui_impl_glfw.cpp)
+add_library(imgui STATIC ${IMGUI_SRC} ${IMGUI_BACKEND})
+target_include_directories(imgui PUBLIC ${IMGUI_DIR})
+target_link_libraries(imgui PUBLIC glfw)
+target_link_libraries(graphicslib INTERFACE imgui vulkanThirdparties)
+
 set(FOUND_GRAPHICS_LIBS TRUE)
