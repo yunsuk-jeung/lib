@@ -3,19 +3,26 @@
 #include <spdlog/fmt/fmt.h>
 #include <spdlog/spdlog.h>
 
-#ifdef __ANDROID__
-#include <spdlog/sinks/android_sink.h>
-#define ROOT_PATH_SIZE 36
-#else
-#define ROOT_PATH_SIZE 60
-#endif
+#define __FILENAME__ LogUtil::extractFileName(__FILE__)
 
-#define LOGGER_FORMAT "[%^%l%$] %v"
-#define PROJECT_NAME "LOG"
-
-#define __FILENAME__ (static_cast<const char*>(__FILE__) + ROOT_PATH_SIZE)
+class LogUtil {
+public:
+  static const char* extractFileName(const char* filePath) {
 #ifdef _WIN32
+    const char* lastSlash = strrchr(filePath, '\\');
+#else
+    const char* lastSlash = strrchr(filePath, '/');
+#endif
+    if (lastSlash != nullptr) {
+      return lastSlash + 1;
+    }
+    else {
+      return filePath;
+    }
+  }
+};
 
+#ifdef _WIN32
 #define LOGI(...) spdlog::info(__VA_ARGS__);
 #define LOGW(...) spdlog::warn(__VA_ARGS__);
 #define LOGE(...)                                                                        \
