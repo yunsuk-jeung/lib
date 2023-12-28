@@ -3,6 +3,7 @@
 #include <spdlog/fmt/fmt.h>
 #include <spdlog/spdlog.h>
 
+#define UNUSED(x) (void)(x)
 #define __FILENAME__ LogUtil::extractFileName(__FILE__)
 
 class LogUtil {
