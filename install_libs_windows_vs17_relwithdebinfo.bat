@@ -1,7 +1,14 @@
 @echo off
 
-@echo off
-powershell -File "download_libs.ps1"
+REM 현재 배치 파일의 경로를 얻기
+set "batchFilePath=%~dp0"
+
+REM 스크립트 파일의 경로 조합
+set "scriptFilePath=%batchFilePath%download_libs.ps1"
+
+echo %scriptFilePath%
+REM PowerShell 스크립트 실행
+powershell -File "%scriptFilePath%"
 
 set CURR_DIR=%~dp0
 set BUILD_TYPE=RelWithDebInfo

@@ -18,13 +18,13 @@ set BUILD_TYPE=Debug
 @REM call win_scripts\install_sophus_1_22_10.bat %BUILD_TYPE%
 @REM echo install_sophus_1_22_10 Done!
 
-@REM cd %CURR_DIR%
-@REM call win_scripts\intsall_oneapi-tbb-2021_11_0_rc1.bat %BUILD_TYPE%
-@REM echo intsall_oneapi-tbb-2021_10_0 Done!
+cd %CURR_DIR%
+call win_scripts\intsall_oneapi-tbb-2021_11_0_rc1.bat %BUILD_TYPE%
+echo intsall_oneapi-tbb-2021_10_0 Done!
 
-@REM cd %CURR_DIR%
-@REM call win_scripts\intsall_spdlog1_12_0.bat %BUILD_TYPE%
-@REM echo intsall_spdlog1_12_0 Done!
+cd %CURR_DIR%
+call win_scripts\intsall_spdlog1_12_0.bat %BUILD_TYPE%
+echo intsall_spdlog1_12_0 Done!
 
 @REM cd %CURR_DIR%
 @REM call win_scripts\intsall_json3_11_2.bat %BUILD_TYPE%
@@ -54,9 +54,9 @@ set BUILD_TYPE=Debug
 @REM call win_scripts\intsall_ceres-solver_2.2.0.bat %BUILD_TYPE%
 @REM echo intsall_ceres-solver_2.2.0 Done!
 
-cd %CURR_DIR%
-call win_scripts\intsall_glfw_3_3_8.bat %BUILD_TYPE%
-echo intsall_glfw_3_3_8 Done!
+@REM cd %CURR_DIR%
+@REM call win_scripts\intsall_glfw_3_3_8.bat %BUILD_TYPE%
+@REM echo intsall_glfw_3_3_8 Done!
 
 @REM cd %CURR_DIR%
 @REM call win_scripts\install_vulkan_thirdparties.bat %BUILD_TYPE%

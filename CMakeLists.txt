@@ -77,3 +77,5 @@ target_link_libraries(imgui PUBLIC glfw)
 target_link_libraries(graphicslib INTERFACE imgui vulkanThirdparties)
 
 set(FOUND_GRAPHICS_LIBS TRUE)
+
+source_group("SourceGroup" FILES utils/Flags.h)
