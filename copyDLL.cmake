@@ -1,5 +1,5 @@
 function(copy_tbb_dlls target EXTERNAL_LIB_DIR)
-  set(TBB_BIN_DIR ${EXTERNAL_LIB_DIR}/libs_win/oneTBB-2021.11.0-rc1/bin)
+  set(TBB_BIN_DIR ${EXTERNAL_LIB_DIR}/libs/oneTBB-2021.11.0-rc1/bin)
 
   if(WIN32)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -17,7 +17,7 @@ function(copy_tbb_dlls target EXTERNAL_LIB_DIR)
 endfunction()
 
 function(copy_cv34_dlls target)
-  set(CV_BIN_DIR ${EXTERNAL_LIB_DIR}/libs_win/opencv-3.4.20/x64/vc17/bin)
+  set(CV_BIN_DIR ${EXTERNAL_LIB_DIR}/libs/opencv-3.4.20/x64/vc17/bin)
 
   if(WIN32)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -36,7 +36,7 @@ function(copy_cv34_dlls target)
 endfunction()
 
 function(copy_tbb_dlls_to_dir target EXTERNAL_LIB_DIR DST_DIR)
-  set(TBB_BIN_DIR ${EXTERNAL_LIB_DIR}/libs_win/oneTBB-2021.11.0-rc1/bin)
+  set(TBB_BIN_DIR ${EXTERNAL_LIB_DIR}/libs/oneTBB-2021.11.0-rc1/bin)
 
   if(WIN32)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -54,7 +54,7 @@ function(copy_tbb_dlls_to_dir target EXTERNAL_LIB_DIR DST_DIR)
 endfunction()
 
 function(copy_cv34_dlls_to_dir target EXTERNAL_LIB_DIR DST_DIR)
-  set(CV_BIN_DIR ${EXTERNAL_LIB_DIR}/libs_win/opencv-3.4.20/x64/vc17/bin)
+  set(CV_BIN_DIR ${EXTERNAL_LIB_DIR}/libs/opencv-3.4.20/x64/vc17/bin)
 
   if(WIN32)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")

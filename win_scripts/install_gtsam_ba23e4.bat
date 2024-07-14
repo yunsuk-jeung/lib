@@ -4,7 +4,7 @@ set CMAKE_PATH="C:\Program Files\CMake\bin\cmake.exe"
 set SCRIPT_DIR=%~dp0
 set TARGET_NAME=gtsam-ba23e45
 set PROJECT_DIR=%SCRIPT_DIR%..\source_codes\%TARGET_NAME%
-set INSTALL_DIR=%PROJECT_DIR%\..\..\libs_win\%TARGET_NAME%
+set INSTALL_DIR=%PROJECT_DIR%\..\..\libs\%TARGET_NAME%
 set VS_VERSION="Visual Studio 17 2022"
 
 set BUILD_TYPE=%1
@@ -47,7 +47,7 @@ IF EXIST CMakeCache.txt DEL /F CMakeCache.txt
 @REM -D GTSAM_BUILD_EXAMPLES_ALWAYS=OFF ^
 REM Run CMake for the project with a custom install prefix
 %CMAKE_PATH% -G %VS_VERSION% -DCMAKE_CXX_FLAGS="-MP" -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
--D CMAKE_PREFIX_PATH=%SCRIPT_DIR%\..\libs_win\boost-1.78.0\lib\cmake;%SCRIPT_DIR%\..\libs_win\eigen-3.4.0\share\eigen3\cmake;%SCRIPT_DIR%\..\libs_win\oneTBB-2021.11.0-rc1/lib/cmake/TBB; ^
+-D CMAKE_PREFIX_PATH=%SCRIPT_DIR%\..\libs\boost-1.78.0\lib\cmake;%SCRIPT_DIR%\..\libs\eigen-3.4.0\share\eigen3\cmake;%SCRIPT_DIR%\..\libs\oneTBB-2021.11.0-rc1/lib/cmake/TBB; ^
 -D BUILD_SHARED_LIBS=OFF ^
 -D GTSAM_BUILD_WITH_MARCH_NATIVE=OFF ^
 -D GTSAM_USE_SYSTEM_EIGEN=ON ^

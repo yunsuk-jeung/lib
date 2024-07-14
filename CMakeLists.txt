@@ -2,11 +2,7 @@ cmake_minimum_required(VERSION 3.18.1)
 
 project("libs")
 
-if(WIN32)
-  set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs_win)
-elseif(ANDROID)
-  set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs/lib)
-endif()
+set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 
 add_library(${PROJECT_NAME} INTERFACE)
 
@@ -36,17 +32,21 @@ list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/oneTBB-2021.11.0-rc1/lib/cmake/TBB)
 find_package(TBB REQUIRED)
 target_link_libraries(${PROJECT_NAME} INTERFACE TBB::tbb)
 
-list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/opencv-3.4.20/x64/vc17/lib)
+if(WIN32)
+  list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/opencv-3.4.20/x64/vc17/lib)
+else()
+  list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/opencv-3.4.20/share/OpenCV)
+endif()
+
 find_package(OpenCV REQUIRED)
 target_include_directories(${PROJECT_NAME} INTERFACE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} INTERFACE ${OpenCV_LIBS})
 
-list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/gflags-2.2.2/lib/cmake/gflags)
-list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/glog-0.6.0/lib/cmake/glog)
-list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/ceres-solver-2.2.0/lib/cmake/Ceres)
-find_package(Ceres REQUIRED)
-target_link_libraries(${PROJECT_NAME} INTERFACE ceres)
-
+# list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/gflags-2.2.2/lib/cmake/gflags)
+# list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/glog-0.6.0/lib/cmake/glog)
+# list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/ceres-solver-2.2.0/lib/cmake/Ceres)
+# find_package(Ceres REQUIRED)
+# target_link_libraries(${PROJECT_NAME} INTERFACE ceres)
 set(FOUND_LIBS TRUE)
 
 add_library(graphicslib INTERFACE)
@@ -58,7 +58,13 @@ target_include_directories(graphicslib
 )
 
 include(findVulkanThirdParties.cmake)
-find_vulkan_thirdparties("C:/VulkanSDK/1.3.250.1")
+
+if(WIN32)
+  find_vulkan_thirdparties("C:/VulkanSDK/1.3.250.1")
+else()
+set(HOME_DIR $ENV{HOME})
+  find_vulkan_thirdparties("${HOME_DIR}/VulkanSDK/1.3.250.1/x86_64")
+endif()
 
 list(APPEND CMAKE_PREFIX_PATH ${LIB_DIR}/glfw-3.3.8/lib/cmake/glfw3)
 find_package(glfw3 REQUIRED)

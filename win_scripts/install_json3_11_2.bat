@@ -2,9 +2,9 @@
 REM Set the paths
 set CMAKE_PATH="C:\Program Files\CMake\bin\cmake.exe"
 set SCRIPT_DIR=%~dp0
-set TARGET_NAME=gflags-2.2.2
+set TARGET_NAME=json-3.11.2
 set PROJECT_DIR=%SCRIPT_DIR%..\source_codes\%TARGET_NAME%
-set INSTALL_DIR=%PROJECT_DIR%\..\..\libs_win\%TARGET_NAME%
+set INSTALL_DIR=%PROJECT_DIR%\..\..\libs\%TARGET_NAME%
 set VS_VERSION="Visual Studio 17 2022"
 
 set BUILD_TYPE=%1
@@ -23,12 +23,8 @@ IF EXIST CMakeCache.txt DEL /F CMakeCache.txt
 
 REM Run CMake for the project with a custom install prefix
 %CMAKE_PATH% -G %VS_VERSION% -DCMAKE_CXX_FLAGS="-MP" -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
--D BUILD_SHARED_LIBS=OFF ^
--D BUILD_STATIC_LIBS=ON ^
--D BUILD_gflags_LIB=ON ^
--D BUILD_TESTING=OFF ^
--D INSTALL_SHARED_LIBS=OFF ^
--D INSTALL_STATIC_LIBS=ON ^
+-DJSON_BuildTests=OFF ^
+-DJSON_Install=ON ^
 ..
 
 REM Optionally, build the project using CMake

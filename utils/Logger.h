@@ -23,7 +23,7 @@ public:
   }
 };
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(__unix__) || defined(__linux__)
 #define LOGI(...) spdlog::info(__VA_ARGS__);
 #define LOGW(...) spdlog::warn(__VA_ARGS__);
 #define LOGE(...)                                                                        \
