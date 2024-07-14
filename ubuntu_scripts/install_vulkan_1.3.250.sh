@@ -12,7 +12,6 @@ tar -xzf vulkansdk-linux.tar.gz -C $HOME/VulkanSDK/$VULKAN_VERSION --strip-compo
 echo "export VULKAN_SDK=$HOME/VulkanSDK/$VULKAN_VERSION/x86_64" >> $HOME/.bashrc
 echo "export PATH=\$VULKAN_SDK/bin:\$PATH" >> $HOME/.bashrc
 echo "export LD_LIBRARY_PATH=\$VULKAN_SDK/lib:\$LD_LIBRARY_PATH" >> $HOME/.bashrc
-echo "export VK_ICD_FILENAMES=\$VULKAN_SDK/etc/vulkan/icd.d/nvidia_icd.json" >> $HOME/.bashrc
 echo "export VK_LAYER_PATH=\$VULKAN_SDK/etc/vulkan/explicit_layer.d" >> $HOME/.bashrc
 
 # Apply the environment variables
